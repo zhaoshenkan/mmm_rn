@@ -11,16 +11,28 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class SKLogin extends Component<Props> {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            account: '',
+            pwd:''
+        };
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <TextInput
                     style = {[styles.userInput,styles.marginStyle]}
                     placeholder = "请输入您的用户名"
+                    onChangeText = {(Text) => {this._account(Text)}}
                 />
                 <TextInput
                     style = {[styles.pwdInput,styles.marginStyle]}
                     placeholder = "请输入您的密码"
+                    onChangeText = {(pwd) => {this.state.pwd = pwd}}
+
                 />
                 <View
                   style = {styles.regist}
@@ -65,8 +77,22 @@ export default class SKLogin extends Component<Props> {
         alert('去修改密码')
     }
 
+    _account(text){
+        this.state.account = text;
+    }
 
     doLogin(){
+
+        console.log(this.state.account);
+        console.log(this.state.pwd);
+
+        let parmas = {
+            'userName': this.state.account,
+            'password': this.state.pwd,
+            'captcha': 'iDn2CDECMyb6z0IqPQlypAyKbkvqaEax',
+            'platform': '1',
+            'version': '1.0.0',
+        }
 
         fetch('https://api.mmm920.com/api/login', {
             method: 'POST',
@@ -74,16 +100,10 @@ export default class SKLogin extends Component<Props> {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json;charset=utf-8',
             },
-            body: JSON.stringify({
-                'userName': '15868192120',
-                'password': '123456',
-                'captcha': 'iDn2CDECMyb6z0IqPQlypAyKbkvqaEax',
-                'platform': '1',
-                'version': '1.0.0',
-            })
+            body: JSON.stringify(parmas)
         }).then((response) => response.json())
             .then((responseJson) => {
-                alert(responseJson);
+                console.log(responseJson);
                 return responseJson.Message;
             })
             .catch((error) => {
@@ -96,8 +116,6 @@ export default class SKLogin extends Component<Props> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // justifyContent: 'center',
-        // alignItems: 'center',
         backgroundColor: '#F5FCFF',
     },
 
@@ -161,8 +179,5 @@ const styles = StyleSheet.create({
         textAlign: 'center',
 
     },
-
-
-
 
 });
