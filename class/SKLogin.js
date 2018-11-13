@@ -68,9 +68,7 @@ export default class SKLogin extends Component<Props> {
 
     doLogin(){
 
-
-
-        fetch('https://xxxxxxxxxxxxxxxxxx', {
+        fetch('https://api.mmm920.com/api/login', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -85,7 +83,7 @@ export default class SKLogin extends Component<Props> {
             })
         }).then((response) => response.json())
             .then((responseJson) => {
-                alert(responseJson.Message);
+                alert(responseJson);
                 return responseJson.Message;
             })
             .catch((error) => {
