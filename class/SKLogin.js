@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, View,TextInput,TouchableOpacity,Text} from 'react-native';
+import test from '../common/test';
+import skHttpRequest from "../common/skHttpRequest";
 
 
 const instructions = Platform.select({
@@ -69,8 +71,22 @@ export default class SKLogin extends Component<Props> {
     }
 
     registAccount(){
-        alert("去注册账户")
-        // console.log('123')
+
+        let dog = new skHttpRequest();
+        let parmas = {
+            'userName': this.state.account,
+            'password': this.state.pwd,
+            'captcha': 'iDn2CDECMyb6z0IqPQlypAyKbkvqaEax',
+            'platform': '1',
+            'version': '1.0.0',
+        }
+        // dog.postRequest('/api/login',parmas);
+        dog.postRequest('/api/login',parmas)
+            .then((json) => {
+                console.log(json);
+            },(json) =>{
+               console.log(json);
+            })
     }
 
     forgetPwd(){
