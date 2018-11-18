@@ -71,22 +71,7 @@ export default class SKLogin extends Component<Props> {
     }
 
     registAccount(){
-
-        let dog = new skHttpRequest();
-        let parmas = {
-            'userName': this.state.account,
-            'password': this.state.pwd,
-            'captcha': 'iDn2CDECMyb6z0IqPQlypAyKbkvqaEax',
-            'platform': '1',
-            'version': '1.0.0',
-        }
-        // dog.postRequest('/api/login',parmas);
-        dog.postRequest('/api/login',parmas)
-            .then((json) => {
-                console.log(json);
-            },(json) =>{
-               console.log(json);
-            })
+       alert('去注册账号')
     }
 
     forgetPwd(){
@@ -110,21 +95,12 @@ export default class SKLogin extends Component<Props> {
             'version': '1.0.0',
         }
 
-        fetch('https://api.mmm920.com/api/login', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json;charset=utf-8',
-            },
-            body: JSON.stringify(parmas)
-        }).then((response) => response.json())
-            .then((responseJson) => {
-                console.log(responseJson);
-                return responseJson.Message;
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        let httpRequest = new  skHttpRequest();
+        httpRequest.postRequest('/api/login',parmas,(response) => {
+            alert('123')
+            console.log(response);
+        });
+
     }
 
 }
