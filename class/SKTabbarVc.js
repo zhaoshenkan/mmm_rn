@@ -12,24 +12,20 @@ export default class SKTabbarVc extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-
-                <TabNavigator>
-                    <TabNavigator.Item
-                        selected={this.state.selectedTab === 'home'}
-                        title="home"
-                        onPress={() => this.setState({ selectedTab: 'home' })}>
-                        <SkHomeVc/>
-                    </TabNavigator.Item>
-                    <TabNavigator.Item
-                        selected={this.state.selectedTab === 'profile'}
-                        title="profile"
-                        onPress={() => this.setState({ selectedTab: 'profile' })}>
-                        <SKMeVc/>
-                    </TabNavigator.Item>
-                </TabNavigator>
-
-            </View>
+            <TabNavigator>
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === 'home'}
+                    title="首页"
+                    onPress={() => this.setState({ selectedTab: 'home' })}>
+                    <SkHomeVc/>
+                </TabNavigator.Item>
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === 'profile'}
+                    title="我的"
+                    onPress={() => this.setState({ selectedTab: 'profile' })}>
+                    <SKMeVc/>
+                </TabNavigator.Item>
+            </TabNavigator>
         );
     }
 }
@@ -39,7 +35,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#535FFF',
     },
     welcome: {
         fontSize: 20,

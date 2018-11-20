@@ -12,9 +12,8 @@ export default class SkHomeVc extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.welcome}>Welcome to React Native!</Text>
-                <Text style={styles.instructions}>To get started, edit App.js</Text>
-                <Text style={styles.instructions}>{instructions}</Text>
+
+
             </View>
         );
     }
@@ -25,7 +24,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#A9A9A9',
+        backgroundColor: '#A92D38',
     },
     welcome: {
         fontSize: 20,
