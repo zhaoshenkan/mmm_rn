@@ -1,19 +1,44 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View,Button,ScrollView,Image} from 'react-native';
+import SKConstant from "../common/SKConstant";
 
-const instructions = Platform.select({
-    ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-    android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-type Props = {};
-export default class SKMeVc extends Component<Props> {
+export default class SKMeVc extends Component {
+    
+    static navigationOptions = {
+        title:'我的',
+        // header:null,
+    };
+    
     render() {
         return (
             <View style={styles.container}>
+                <ScrollView style={styles.scrollView}>
+                    <View style={{
+                        width: SKConstant.kScreenWidth,
+                        height: SKConstant.viewHeight(400),
+                        marginRight: 0, marginTop: 0,
+                        backgroundColor: '#42FF96'
+                    }}>
+                        <Image source={require('../image/minebanner.png')}
+                               style={{
+                                   width: SKConstant.kScreenWidth,
+                                   height: 400,
+                                   backgroundColor: '#ffffff',
+                                   alignSelf: 'center'
+                               }}/>
+                        {/*<Image style={styles.avatar}/>*/}
+                        <Text style={styles.headText}>赵申侃</Text>
+                        <Text style={styles.headText}>已认证</Text>
+                        {/*<TouchableOpacity>*/}
 
+                        {/*</TouchableOpacity>*/}
+
+                        {/*<TouchableOpacity>*/}
+
+                        {/*</TouchableOpacity>*/}
+                    </View>
+
+                </ScrollView>
             </View>
         );
     }
@@ -24,16 +49,30 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#00FFFF',
+        backgroundColor:'#4CFFE7',
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
+
+    scrollView:{
+        flex:1,
+        backgroundColor:'#8A84FF',
+        flexDirection: 'column',
     },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
+
+    headView:{
+        width:300,
+        // height:600,
+        backgroundColor:'#51FF7F'
     },
+
+    avatar:{
+        width:100,
+        height:100,
+        backgroundColor: '#FF4A6A',
+    },
+
+    headText:{
+        color: '#ffffff',
+        fontSize:16,
+    },
+
 });

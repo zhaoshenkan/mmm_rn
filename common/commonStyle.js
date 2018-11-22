@@ -118,5 +118,12 @@ export const commonStyle = {
   around: 'space-around',
   between: 'space-between',
   center: 'center',
-  row: 'row'
+  row: 'row',
+
+    //一下是自己项目的定义
+    appThemeColor:'#99CC33',
+    appRedColor:'#f53739',
+    appLineColor:'#eeeeee'
+
+
 }
