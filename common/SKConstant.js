@@ -10,12 +10,13 @@ const SKConstant = {
     kScreenWidth: Dimensions.get('window').width,
     kScreenHeight: Dimensions.get('window').height,
 
+
     viewWidth: (vWidth) => {
         return this.kScreenWidth/375*vWidth
     },
 
     viewHeight: (vHeight) => {
-        return this.kScreenHeight/657*vHeight
+        return this.kScreenHeight*vHeight/657
     },
 
 

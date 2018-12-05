@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,Button,ScrollView,Image} from 'react-native';
+import {Platform, StyleSheet, Text, View,Button,ScrollView,Image,ImageBackground} from 'react-native';
 import SKConstant from "../common/SKConstant";
+import {Dimensions} from 'react-native';
 
 export default class SKMeVc extends Component {
     
@@ -13,30 +14,15 @@ export default class SKMeVc extends Component {
         return (
             <View style={styles.container}>
                 <ScrollView style={styles.scrollView}>
-                    <View style={{
-                        width: SKConstant.kScreenWidth,
-                        height: SKConstant.viewHeight(400),
-                        marginRight: 0, marginTop: 0,
-                        backgroundColor: '#42FF96'
-                    }}>
-                        <Image source={require('../image/minebanner.png')}
-                               style={{
-                                   width: SKConstant.kScreenWidth,
-                                   height: 400,
-                                   backgroundColor: '#ffffff',
-                                   alignSelf: 'center'
-                               }}/>
-                        {/*<Image style={styles.avatar}/>*/}
-                        <Text style={styles.headText}>赵申侃</Text>
-                        <Text style={styles.headText}>已认证</Text>
-                        {/*<TouchableOpacity>*/}
-
-                        {/*</TouchableOpacity>*/}
-
-                        {/*<TouchableOpacity>*/}
-
-                        {/*</TouchableOpacity>*/}
-                    </View>
+                    <ImageBackground
+                        style = {styles.headView}
+                        source = {require('../image/minebanner.png')}>
+                        <Image style = {styles.avatar}/>
+                        <View style = {styles.textView}>
+                            <Text style={styles.headText}>赵申侃</Text>
+                            <Text style={styles.headText}>已认证</Text>
+                        </View>
+                    </ImageBackground>
 
                 </ScrollView>
             </View>
@@ -59,20 +45,30 @@ const styles = StyleSheet.create({
     },
 
     headView:{
-        width:300,
-        // height:600,
-        backgroundColor:'#51FF7F'
+        width:SKConstant.kScreenWidth,
+        height:150,
+        backgroundColor:'#51FF7F',
+        flexDirection:'row',
     },
 
     avatar:{
-        width:100,
-        height:100,
+        width:75,
+        height:75,
+        marginLeft:20,
+        marginTop:30,
+        borderRadius:75/2,
         backgroundColor: '#FF4A6A',
+    },
+
+    textView:{
+        marginLeft:30,
+        marginTop:40,
     },
 
     headText:{
         color: '#ffffff',
         fontSize:16,
+        height:30,
     },
 
 });
