@@ -8,15 +8,14 @@ type Props = {
     productName:string,
     price:string,
 };
-export default class SKActivityProductItem extends Component<Props> {
-
+export default class SKRecommondProductItem extends Component<Props> {
 
     render() {
 
         return (
             <View style={styles.container}>
                 <Image style={styles.icon}
-                    source={ this.props.productImg}
+                       source={ this.props.productImg}
                 />
                 <Text style={styles.productName} numberOfLines={2} >
                     {this.props.productName }
@@ -36,14 +35,14 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         backgroundColor:'#ffffff',
         alignItems: 'center',
-        width:SKConstant.kScreenWidth/3,
-        height:SKConstant.viewWidth(160),
+        width:SKConstant.kScreenWidth/2,
+        height: SKConstant.kScreenWidth/2 - 20 + SKConstant.viewWidth(60),
     },
 
     icon:{
         resizeMode:'contain',
-        width:SKConstant.viewWidth(100),
-        height:SKConstant.viewWidth(100),
+        width:SKConstant.kScreenWidth/2 - 20,
+        height:SKConstant.kScreenWidth/2 - 20,
     },
 
     productName:{
@@ -51,7 +50,7 @@ const styles = StyleSheet.create({
         fontSize:SKConstant.kFontSize(13),
         flexWrap:'wrap',
         marginTop:SKConstant.viewWidth(10),
-        height:33,
+        height:SKConstant.viewWidth(33),
     },
 
     price:{

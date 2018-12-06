@@ -5,6 +5,7 @@ import SKConstant from '../common/SKConstant'
 import SkHttpRequest from '../common/skHttpRequest'
 import Swiper from 'react-native-swiper'
 import SKActivityProductItem from "../View/SKActivityProductItem";
+import SKRecommondProductItem from "../View/SKRecommondProductItem";
 
 export default class SkHomeVc extends Component {
     // 构造
@@ -16,6 +17,7 @@ export default class SkHomeVc extends Component {
             firstFloor:[],
             secondFloor:[],
             activetyFloor:[],
+            recommondFloor:[],
         };
     }
 
@@ -66,6 +68,19 @@ export default class SkHomeVc extends Component {
 
                     </View>
 
+                    <View>
+                        <View style={{flexDirection:"row",justifyContent:'center',alignItems:'center',
+                            width:SKConstant.kScreenWidth,height:SKConstant.viewHeight(40)}}>
+                            <Text style={{color:'#e5e5e5'}}> ---- </Text>
+                            <Text style={{fontSize:SKConstant.kFontSize(16),color:'#000000'}}>推荐商品</Text>
+                            <Text style={{color:'#e5e5e5'}}> ---- </Text>
+                        </View>
+
+                        <View style={styles.recommondFloor}>
+                            {this._renderRecommondFloor()}
+                        </View>
+                    </View>
+
                 </ScrollView>
             </View>
         );
@@ -82,6 +97,7 @@ export default class SkHomeVc extends Component {
                 firstFloor:response.data.firstIcon,
                 secondFloor:response.data['secondIcon'],
                 activetyFloor:response.data['newProducts'],
+                recommondFloor:response.data['recommendProducts'],
             });
 
         });
@@ -121,19 +137,32 @@ export default class SkHomeVc extends Component {
     _renderActivityFloor(){
         let arr = this.state.activetyFloor;
         let item = arr.map((value,index) =>{
-            let activeItem = <SKActivityProductItem style={styles.activityProductItem}
-                                                    productImg={ {uri:this._returnPicPath(value['picturePath'])} } productName={value['name']} price={'￥' + value['price']}
+            let activeItem = <SKActivityProductItem productImg={ {uri:this._returnPicPath(value['picturePath'],'100x100')} } productName={value['name']} price={'￥' + value['price']}
                                                     key = {index}/>
             return activeItem;
         })
         return item;
     }
 
-    _returnPicPath(pic){
-        let newPicPath =  pic.replace('{0}','100x100')
-        console.log(SKConstant.kBasePicPrefixUrl + newPicPath);
-        return (SKConstant.kBasePicPrefixUrl + newPicPath)
+    _renderRecommondFloor(){
+        let arr = this.state.recommondFloor;
+        let item = arr.map((value,index) =>{
+            let activeItem = <SKRecommondProductItem
+                productImg={ {uri:this._returnPicPath(value['picturePath'],'200x200')} } productName={value['name']} price={'￥' + value['price']}
+                key = {index}/>
+            return activeItem;
+        })
+        return item;
     }
+
+    _returnPicPath(pic,size){
+        let newPicPath =  pic.replace('{0}',size)
+        console.log(SKConstant.kBasePicPrefixUrl + newPicPath);
+        let picUrl = SKConstant.kBasePicPrefixUrl + newPicPath
+        return picUrl
+    }
+
+
 }
 
 const styles = StyleSheet.create({
@@ -237,9 +266,16 @@ const styles = StyleSheet.create({
         flexDirection:'row',
     },
 
+    recommondFloor:{
+        width:SKConstant.kScreenWidth,
+        justifyContent:'flex-start',
+        flexDirection:'row',
+        flexWrap:'wrap',
+    },
+
     activityProductItem:{
         width:SKConstant.kScreenWidth/3,
-        height:SKConstant.kScreenWidth*7/12
+        // height:SKConstant.kScreenWidth*7/12
     }
 
 
