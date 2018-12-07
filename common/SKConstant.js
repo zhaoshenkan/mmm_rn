@@ -1,11 +1,10 @@
 
-import {Dimensions} from 'react-native';
+import {Dimensions,Platform} from 'react-native';
 const SKConstant = {
 
     appThemeColor:'#99CC33',
     appRedColor:'#f53739',
     appLineColor:'#eeeeee',
-
 
     kScreenWidth: Dimensions.get('window').width,
     kScreenHeight: Dimensions.get('window').height,
@@ -22,9 +21,44 @@ const SKConstant = {
         return font*Dimensions.get('window').width/375
     },
 
+    kBasePicPrefixUrl:'https://www.mmm920.com/upload',
+
+    kDeivceIsIos:()=>{
+        return (Platform.OS === 'ios') ? true:false;
+    },
+    
+    kDeivceIsIphoneX:()=>{
+        if (Platform.OS === 'ios') {
+            if (Dimensions.get('window').width === 375 && Dimensions.get('window').height == 812 ) {
+                return true;
+            }
+        }
+        return false;
+    },
+
+    kNaviBarHeight:()=>{
+        return this.kDeivceIsIphoneX === true ? 88:64;
+    },
+
+    kTabbarSafeHeihgt:()=>{
+        return this.kDeivceIsIphoneX === true ? 34:0;
+    },
+
+    kTabbarHeight:49,
+    kStatusHeight:20,
+    
+
+     _isIphoneX(){
+        if (Platform.OS === 'ios') {
+            if (Dimensions.get('window').width === 375 && Dimensions.get('window').height == 812 ) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
-    kBasePicPrefixUrl:'https://www.mmm920.com/upload'
+
 
 //#define APP_PIC_PREFIX_URL  @"https://www.mmm920.com/upload"
 //#define APP_BASE_URL @"https://api.mmm920.com"

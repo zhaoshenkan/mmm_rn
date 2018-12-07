@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         backgroundColor:'#ffffff',
         alignItems: 'center',
-        width:SKConstant.kScreenWidth/2,
+        width:SKConstant.kScreenWidth/2 - 1,
         height: SKConstant.kScreenWidth/2 - 20 + SKConstant.viewWidth(60),
     },
 
@@ -51,11 +51,15 @@ const styles = StyleSheet.create({
         flexWrap:'wrap',
         marginTop:SKConstant.viewWidth(10),
         height:SKConstant.viewWidth(33),
+        marginLeft: 10,
+        marginRight: 10,
     },
 
     price:{
         color:'#FF383D',
         fontSize: SKConstant.kFontSize(13),
+        marginLeft: 10,
+        alignSelf: 'flex-start',
     },
 
 

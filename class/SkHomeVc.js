@@ -146,13 +146,25 @@ export default class SkHomeVc extends Component {
 
     _renderRecommondFloor(){
         let arr = this.state.recommondFloor;
-        let item = arr.map((value,index) =>{
-            let activeItem = <SKRecommondProductItem
+        let item = [];
+        for (let i = 0; i < arr.length; i++) {
+            let value = arr[i];
+            let productItem = <SKRecommondProductItem
                 productImg={ {uri:this._returnPicPath(value['picturePath'],'200x200')} } productName={value['name']} price={'￥' + value['price']}
-                key = {index}/>
-            return activeItem;
-        })
+                key = {i}/>
+            item.push(productItem)
+
+            if (i%2 == 0) {
+                let  varLine = <View style={{backgroundColor:SKConstant.appLineColor,height:productItem.height,width:1} }  key = {i + 100}></View>
+                item.push(varLine);
+            }  else {
+                let horLine = <View style={{backgroundColor:SKConstant.appLineColor,height:1,width:SKConstant.kScreenWidth}}  key = {i + 1001}/>
+                item.push(horLine)
+            }
+
+        }
         return item;
+
     }
 
     _returnPicPath(pic,size){
@@ -178,7 +190,7 @@ const styles = StyleSheet.create({
     naviView:{
         flexDirection: 'row',
         alignItems:'flex-end',
-        height:88,
+        height:SKConstant.kNaviBarHeight(),
         width:SKConstant.kScreenWidth,
         backgroundColor:'#ffffff',
     },

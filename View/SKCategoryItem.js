@@ -13,7 +13,8 @@ export default class SKOrderItem extends Component<Props> {
             <View style={styles.container}>
                 <View style={styles.topView}>
                     <Image style={styles.icon}
-                           source={ this.props.img }/>
+                           source={ this.props.img }
+                    />
                 </View>
                 <Text style={styles.text}>
                     {this.props.title}
@@ -25,9 +26,9 @@ export default class SKOrderItem extends Component<Props> {
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center',
+        alignItems: 'center',
         flexDirection: 'column',
-        width:SKConstant.kScreenWidth/5,
+        width:SKConstant.kScreenWidth/4,
         height: SKConstant.kScreenWidth/5,
         backgroundColor:'#ffffff'
     },
@@ -39,9 +40,10 @@ const styles = StyleSheet.create({
     },
 
     icon:{
-        resizeMode:'center',
+        resizeMode:'contain',
         width: SKConstant.viewWidth(30),
         height: SKConstant.viewWidth(30),
+        // backgroundColor: '#FF1E4A'
     },
 
     text:{

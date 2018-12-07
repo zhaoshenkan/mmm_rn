@@ -7,9 +7,9 @@ import SKMeNavigationVc from './SKMeNavigationVc';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 
 const SKTabbarVc = createBottomTabNavigator({
+    首页: {screen:SkHomeVc},
+    我的: {screen:SKMeNavigationVc},
 
-    Home: SkHomeVc,
-    Me:SKMeNavigationVc,
 });
 
 export default createAppContainer(SKTabbarVc);
