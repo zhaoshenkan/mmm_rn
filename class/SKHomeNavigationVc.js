@@ -1,16 +1,14 @@
-
 import React from 'react';
 import { createStackNavigator,createAppContainer } from 'react-navigation';
-import SKMeVc from "./SKMeVc";
-import SKShopCartVc from "./SKShopCartVc";
 import SKLogin from "./SKLogin";
+import SkHomeVc from "./SkHomeVc";
 
-const SKMeNavigationVc = createStackNavigator({
-    Me:SKMeVc,
-    Login:SKLogin,
-},
+const SKHomeNavigationVc = createStackNavigator({
+        Home:SkHomeVc,
+        Login:SKLogin,
+    },
     {
-        initialRouteName: 'Me',
+        initialRouteName: 'Home',
         defaultNavigationOptions: {
             headerStyle: {
                 backgroundColor: '#f4511e',
@@ -23,6 +21,4 @@ const SKMeNavigationVc = createStackNavigator({
     }
 );
 
-export default createAppContainer(SKMeNavigationVc);
-
-
+export default createAppContainer(SKHomeNavigationVc);

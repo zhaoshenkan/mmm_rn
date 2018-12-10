@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, View,TextInput,TouchableOpacity,Text} from 'react-native';
+import {Platform, StyleSheet, View,TextInput,TouchableOpacity,Text,AsyncStorage} from 'react-native';
 import test from '../common/test';
 import skHttpRequest from "../common/skHttpRequest";
 
@@ -13,6 +13,10 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class SKLogin extends Component<Props> {
+
+    static navigationOptions = {
+        title:'登录',
+    };
 
     constructor(props) {
         super(props);
@@ -97,8 +101,16 @@ export default class SKLogin extends Component<Props> {
 
         let httpRequest = new  skHttpRequest();
         httpRequest.postRequest('/api/login',parmas,(response) => {
-            alert('123')
             console.log(response);
+            if (response.isSuccess === true) {
+                AsyncStorage.setItem('token', response.data['token'], function (error) {
+                    if (error) {
+                        alert('存储失败')
+                    }else {
+                        alert('存储完成')
+                    }
+                })
+            }
         });
 
     }

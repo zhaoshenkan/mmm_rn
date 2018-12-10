@@ -108,8 +108,8 @@ const styles = StyleSheet.create({
 
     headView:{
         width:SKConstant.kScreenWidth,
-        height:SKConstant.viewHeight(150),
-        backgroundColor:'#51FF7F',
+        height:SKConstant.viewHeight(150) + SKConstant.kStatusHeight,
+        backgroundColor:'#ffffff',
         flexDirection:'row',
     },
 
@@ -117,14 +117,14 @@ const styles = StyleSheet.create({
         width:75,
         height:75,
         marginLeft:20,
-        marginTop:30,
+        marginTop:20 + SKConstant.kNaviBarHeight(),
         borderRadius:75/2,
         backgroundColor: '#FF4A6A',
     },
 
     textView:{
         marginLeft:30,
-        marginTop:40,
+        marginTop:20 + SKConstant.kNaviBarHeight(),
     },
 
     headText:{

@@ -8,6 +8,12 @@ import SKActivityProductItem from "../View/SKActivityProductItem";
 import SKRecommondProductItem from "../View/SKRecommondProductItem";
 
 export default class SkHomeVc extends Component {
+
+    static navigationOptions = {
+        // title:'我的',
+        header:null,
+    };
+
     // 构造
     constructor(props) {
         super(props);

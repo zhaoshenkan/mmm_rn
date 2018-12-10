@@ -27,6 +27,7 @@ export default class SKMineHeaderCell extends Component<Props> {
                     <Image style={styles.iconStyle}
                            source={require('../image/arrowRight.png')}/>
                 </View>
+                </View>
             </View>
         );
     }

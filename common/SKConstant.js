@@ -23,7 +23,7 @@ const SKConstant = {
 
     kBasePicPrefixUrl:'https://www.mmm920.com/upload',
 
-    kDeivceIsIos:()=>{
+    kDeivceIsIos:() => {
         return (Platform.OS === 'ios') ? true:false;
     },
     
@@ -36,19 +36,43 @@ const SKConstant = {
         return false;
     },
 
+    kIPhoneStatus:() => {
+        if (Platform.OS === 'ios') {
+            if (Dimensions.get('window').width === 375 && Dimensions.get('window').height == 812 ) {
+                return 44;
+            }
+        }
+        return 20;
+    },
+
     kNaviBarHeight:()=>{
-        return this.kDeivceIsIphoneX === true ? 88:64;
+
+        if (Platform.OS === 'ios') {
+            if (Dimensions.get('window').width === 375 && Dimensions.get('window').height == 812 ) {
+                return 88;
+            }
+        }
+        return 64;
+
+
+        // return this.kDeivceIsIphoneX === true ? 88:64;
     },
 
     kTabbarSafeHeihgt:()=>{
-        return this.kDeivceIsIphoneX === true ? 34:0;
+        if (Platform.OS === 'ios') {
+            if (Dimensions.get('window').width === 375 && Dimensions.get('window').height == 812 ) {
+                return 34;
+            }
+        }
+        return 0;
+        // return this.kDeivceIsIphoneX === true ? 34:0;
     },
 
     kTabbarHeight:49,
     kStatusHeight:20,
     
 
-     _isIphoneX(){
+      _isIphoneX(){
         if (Platform.OS === 'ios') {
             if (Dimensions.get('window').width === 375 && Dimensions.get('window').height == 812 ) {
                 return true;
