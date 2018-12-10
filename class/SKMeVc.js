@@ -28,7 +28,9 @@ export default class SKMeVc extends Component {
                         </View>
                     </ImageBackground>
                     <View style={ styles.downline }/>
-                    <SKMineHeaderCell img={ require('../image/meOrder.png') } leftTitle={'我的订单'} rightTitle={'全部订单'}/>
+                    <SKMineHeaderCell img={ require('../image/meOrder.png') } leftTitle={'我的订单'} rightTitle={'全部订单'} callback = { () => {
+                        this.props.navigation.navigate('OrderList');
+                    }} />
                     <View style={ styles.downline2 }/>
                     <View style={styles.orderView}>
                         {this._renderOrderItem()}
@@ -90,6 +92,8 @@ export default class SKMeVc extends Component {
         })
         return items
     }
+
+
 }
 
 const styles = StyleSheet.create({

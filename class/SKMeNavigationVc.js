@@ -4,10 +4,12 @@ import { createStackNavigator,createAppContainer } from 'react-navigation';
 import SKMeVc from "./SKMeVc";
 import SKShopCartVc from "./SKShopCartVc";
 import SKLogin from "./SKLogin";
+import SKOrderListVc from "./SKOrderListVc";
 
 const SKMeNavigationVc = createStackNavigator({
     Me:SKMeVc,
     Login:SKLogin,
+    OrderList:SKOrderListVc,
 },
     {
         initialRouteName: 'Me',

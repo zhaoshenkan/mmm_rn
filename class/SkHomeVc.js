@@ -97,7 +97,7 @@ export default class SkHomeVc extends Component {
         let httpRequest = new SkHttpRequest;
         let parmas = {'':''}
         httpRequest.postRequest('/api/index4phone',parmas,(response) => {
-            console.log(response.data);
+            // console.log(response.data);
             this.setState({
                 banners:response.data.banner,
                 firstFloor:response.data.firstIcon,
@@ -175,7 +175,6 @@ export default class SkHomeVc extends Component {
 
     _returnPicPath(pic,size){
         let newPicPath =  pic.replace('{0}',size)
-        console.log(SKConstant.kBasePicPrefixUrl + newPicPath);
         let picUrl = SKConstant.kBasePicPrefixUrl + newPicPath
         return picUrl
     }

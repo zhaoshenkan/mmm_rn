@@ -11,34 +11,31 @@ export default class skHttpRequest {
         AsyncStorage.getItem('token', function (error, result) {
             if (error) {
                 alert('读取失败')
-                token = result;
             }else {
-                console.log(result)
-                alert('读取完成')
+                // alert(result);
+
+                fetch('https://api.mmm920.com' + api, {
+
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json;charset=utf-8',
+                        'Authorization':result,
+                    },
+                    body: JSON.stringify(parmas)
+                }).then((response) => response.json())
+                    .then((response) => {
+                        successResponse(response);
+                    })
+                    .catch((error) => {
+                        // console.error(error);
+                    });
             }
         })
 
 
-        fetch('https://api.mmm920.com' + api, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json;charset=utf-8',
-                'Authorization':token
-            },
-            body: JSON.stringify(parmas)
-        }).then((response) => response.json())
-            .then((response) => {
-                successResponse(response);
-            })
-            .catch((error) => {
-                // console.error(error);
-            });
+
 
     };
-
-    run(){
-        alert('dog is running');
-    }
 
 }

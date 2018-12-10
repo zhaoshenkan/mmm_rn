@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,Image} from 'react-native';
+import {Platform, StyleSheet, Text, View,Image,TouchableOpacity} from 'react-native';
 import {Dimensions} from 'react-native'
 import SKConstant from "../common/SKConstant";
 
@@ -12,6 +12,7 @@ export default class SKMineHeaderCell extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
+
                 <View style={styles.leftView}>
                     <Image source={this.props.img}
                            style={styles.iconStyle} />
@@ -20,16 +21,21 @@ export default class SKMineHeaderCell extends Component<Props> {
                     </Text>
                 </View>
 
-                <View style={styles.rightView}>
+                <TouchableOpacity style = {styles.rightView}
+                                  onPress = { this._clickEvent.bind(this)}>
                     <Text style={styles.textStyle}>
                         {this.props.rightTitle}
                     </Text>
                     <Image style={styles.iconStyle}
                            source={require('../image/arrowRight.png')}/>
-                </View>
-                </View>
+                </TouchableOpacity>
+
             </View>
         );
+    }
+
+    _clickEvent () {
+        this.props.callback()
     }
 }
 
