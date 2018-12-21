@@ -10,7 +10,6 @@ import SKCatergoryItem from "../View/SKCategoryItem";
 export default class SKMeVc extends Component {
     
     static navigationOptions = {
-        // title:'我的',
         header:null,
     };
     

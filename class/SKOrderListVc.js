@@ -1,17 +1,13 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,FlatList} from 'react-native';
+import {Platform, StyleSheet, Text, View,FlatList,RefreshControl} from 'react-native';
 import SkHttpRequest from "../common/skHttpRequest";
 import SKOrderListCell from "../View/SKOrderListCell";
 
-const instructions = Platform.select({
-    ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-    android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-type Props = {};
+type Props = {
+};
 export default class SKOrderListVc extends Component<Props> {
+
+    page = 1;
 
     static navigationOptions = {
         title:'我的订单',
@@ -22,6 +18,7 @@ export default class SKOrderListVc extends Component<Props> {
         // 初始状态
         this.state = {
             orderList:[],
+            isRefreshing: false,
         };
     }
 
@@ -29,27 +26,46 @@ export default class SKOrderListVc extends Component<Props> {
         return (
             <View style={styles.container}>
                 <FlatList
-                    data={this.state.OrderList}
-                    renderItem={({item}) => <SKOrderListCell orderNo = {this.state.orderList.orderNo} productList = {this.state.orderList.goods} /> }/>
+                    data={this.state.orderList}
+                    keyExtractor={(item, index) => index.toString()}
+                    renderItem={({item}) => <SKOrderListCell orderNo = {  item.createTime.substr(0,10) +  '  订单号' + item.orderNo}
+                                                             productList = {item.goods}
+                                                             productInfo={'共计商品' + item.goods.length + '件 合计:'}
+                                                             price = {'￥' + item.totalPrice}
+                                                             express={'(含运费￥' + item.freight + '元)' }
+                                                             state={item.status}
+                                                />}
+                />
             </View>
         );
     }
 
+    _onRefresh() {
+
+    }
+
     componentDidMount() {
         // -1 0 1 2 3 4
+       this._postdata()
+    }
+
+    _postdata(){
         let httpRequest = new SkHttpRequest;
-        let parmas = {  'keyword':'',
-                        'pageIndex':'0',
-                         'status':'-1',
-                         'pageSize':'10'}
+        let parmas = { 'keyword':'',
+            'pageIndex':this.page,
+            'status':'-1',
+            'pageSize':'10'}
         httpRequest.postRequest('/authapi/order/getOrders',parmas,(response) => {
             console.log(response);
             this.setState({
-                orderList:response.data['list']
+                orderList:response.data['list'],
+                isRefreshing: false
             });
 
         });
     }
+
+
 }
 
 const styles = StyleSheet.create({
@@ -59,5 +75,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F5FCFF',
     },
+
 
 });

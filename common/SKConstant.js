@@ -26,15 +26,28 @@ const SKConstant = {
     kDeivceIsIos:() => {
         return (Platform.OS === 'ios') ? true:false;
     },
-    
-    kDeivceIsIphoneX:()=>{
+
+    a:() => {
         if (Platform.OS === 'ios') {
             if (Dimensions.get('window').width === 375 && Dimensions.get('window').height == 812 ) {
                 return true;
             }
         }
+    },
+
+    kDeivceIsIphoneX(){
+        console.log(1111111111111);
+        if ( this.a() ) {
+            return true
+        }
         return false;
     },
+
+    b(){
+        console.log('bbbbb');
+        this.a();
+    },
+
 
     kIPhoneStatus:() => {
         if (Platform.OS === 'ios') {

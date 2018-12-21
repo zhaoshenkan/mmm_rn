@@ -33,7 +33,7 @@ export default class SKShopCartVc extends Component<Props> {
     }
 
     _toLogin(){
-        this.props.navigation.navigate('login');
+        this.props.navigation.navigate('Login');
     }
 }
 

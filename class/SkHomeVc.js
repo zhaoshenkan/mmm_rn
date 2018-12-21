@@ -10,7 +10,6 @@ import SKRecommondProductItem from "../View/SKRecommondProductItem";
 export default class SkHomeVc extends Component {
 
     static navigationOptions = {
-        // title:'我的',
         header:null,
     };
 
@@ -151,6 +150,11 @@ export default class SkHomeVc extends Component {
     }
 
     _renderRecommondFloor(){
+
+        console.log('****************');
+        console.log(SKConstant.kDeivceIsIphoneX());
+        // SKConstant.b();
+
         let arr = this.state.recommondFloor;
         let item = [];
         for (let i = 0; i < arr.length; i++) {

@@ -13,7 +13,7 @@ type Props = {};
 export default class SKCatergory extends Component<Props> {
 
     static navigationOptions = {
-        title:'分类',
+        header:null,
     };
 
     render() {
